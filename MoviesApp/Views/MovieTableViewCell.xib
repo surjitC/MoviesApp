@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MovieTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MovieTableViewCell" id="VDV-rk-GiI" customClass="MovieTableViewCell" customModule="MoviesApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="487" height="159"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VDV-rk-GiI" id="HOg-6r-x1E">
+                <rect key="frame" x="0.0" y="0.0" width="487" height="159"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="AMV-nx-5WG">
+                        <rect key="frame" x="12" y="12" width="90" height="135"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="999" constant="128" id="9PF-RK-WbT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-fv-ifV">
+                        <rect key="frame" x="114" y="24" width="361" height="25.5"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="21"/>
+                        <color key="textColor" systemColor="systemRedColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3u-tG-mlx">
+                        <rect key="frame" x="114" y="69.5" width="361" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xc-XC-kGD">
+                        <rect key="frame" x="431.5" y="125" width="43.5" height="22"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                        <color key="textColor" systemColor="systemYellowColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="B5o-fv-ifV" firstAttribute="leading" secondItem="AMV-nx-5WG" secondAttribute="trailing" constant="12" id="7MB-4c-vuM"/>
+                    <constraint firstItem="J3u-tG-mlx" firstAttribute="leading" secondItem="B5o-fv-ifV" secondAttribute="leading" id="B0Q-2U-WtW"/>
+                    <constraint firstAttribute="bottom" secondItem="AMV-nx-5WG" secondAttribute="bottom" constant="12" id="DkS-fp-HB5"/>
+                    <constraint firstItem="J3u-tG-mlx" firstAttribute="trailing" secondItem="B5o-fv-ifV" secondAttribute="trailing" id="Q3X-Go-bSA"/>
+                    <constraint firstItem="AMV-nx-5WG" firstAttribute="top" secondItem="HOg-6r-x1E" secondAttribute="top" constant="12" id="Qwe-Y6-ZRB"/>
+                    <constraint firstItem="6Xc-XC-kGD" firstAttribute="trailing" secondItem="B5o-fv-ifV" secondAttribute="trailing" id="Rpe-ad-mo4"/>
+                    <constraint firstItem="J3u-tG-mlx" firstAttribute="top" secondItem="B5o-fv-ifV" secondAttribute="bottom" constant="20" id="YLL-ry-B2w"/>
+                    <constraint firstItem="6Xc-XC-kGD" firstAttribute="bottom" secondItem="AMV-nx-5WG" secondAttribute="bottom" id="lQE-H6-eAr"/>
+                    <constraint firstItem="B5o-fv-ifV" firstAttribute="top" secondItem="AMV-nx-5WG" secondAttribute="top" constant="12" id="ph7-pI-8Ve"/>
+                    <constraint firstItem="AMV-nx-5WG" firstAttribute="width" secondItem="AMV-nx-5WG" secondAttribute="height" multiplier="2:3" id="sIp-UL-8i0"/>
+                    <constraint firstAttribute="trailing" secondItem="B5o-fv-ifV" secondAttribute="trailing" constant="12" id="vvc-c2-lXT"/>
+                    <constraint firstItem="AMV-nx-5WG" firstAttribute="leading" secondItem="HOg-6r-x1E" secondAttribute="leading" constant="12" id="zp3-2d-Fbx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="languageLabel" destination="J3u-tG-mlx" id="D93-H7-kgb"/>
+                <outlet property="posterImageView" destination="AMV-nx-5WG" id="aAX-dw-YqB"/>
+                <outlet property="titleLabel" destination="B5o-fv-ifV" id="f6k-Qe-1ei"/>
+                <outlet property="yearLabel" destination="6Xc-XC-kGD" id="y9m-bx-yo5"/>
+            </connections>
+            <point key="canvasLocation" x="-74.637681159420296" y="-7.7008928571428568"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="imagePlaceholder" width="3543" height="4961"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
