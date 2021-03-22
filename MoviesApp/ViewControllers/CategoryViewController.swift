@@ -31,12 +31,12 @@ class CategoryViewController: UIViewController {
 
 extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movieCategoryViewModel?.subCategoryNames.count ?? 0
+        return self.movieCategoryViewModel?.catageries.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
-        cell.textLabel?.text = self.movieCategoryViewModel?.getSubCategoryName(from: indexPath.row)
+        cell.textLabel?.text = self.movieCategoryViewModel?.catageries[indexPath.row]
         return cell
     }
     
@@ -46,9 +46,12 @@ extension CategoryViewController: UITableViewDataSource {
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = MovieViewController.initializeVC()
-        let movies = self.movieCategoryViewModel?.getSubCategoryMovies(from: indexPath.row) ?? []
-        let movieViewModel = MovieViewModel(movies: movies)
-        vc.movieViewModel = movieViewModel
+        if let cat = self.movieCategoryViewModel?.catageries[indexPath.row] {
+            let movies = self.movieCategoryViewModel?.fetchMovies(with: cat) ?? []
+            let movieViewModel = MovieViewModel(movies: movies)
+            vc.movieViewModel = movieViewModel
+        }
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -13,6 +13,8 @@ class MovieViewController: UIViewController {
     
     var movieViewModel: MovieViewModel?
     
+    @IBOutlet var sortingCatagorySegmentControl: UISegmentedControl!
+    
     class func initializeVC() -> MovieViewController {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieViewController") as?  MovieViewController else {
             return MovieViewController()
@@ -34,6 +36,7 @@ class MovieViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.sortingCatagorySegmentControl.selectedSegmentIndex = 1
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,6 +44,10 @@ class MovieViewController: UIViewController {
         self.imageDownloader.urlResquest?.invalidateAndCancel()
     }
 
+    @IBAction func sortCategoryTapped(_ sender: UISegmentedControl) {
+        self.movieViewModel?.sortMovies(value: sender.selectedSegmentIndex)
+        self.moviesTableView.reloadData()
+    }
 }
 
 extension MovieViewController: UITableViewDataSource {

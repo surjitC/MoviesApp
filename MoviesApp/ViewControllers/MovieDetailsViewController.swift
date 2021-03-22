@@ -48,7 +48,7 @@ class MovieDetailsViewController: UIViewController {
         movieDetailTableView.tableHeaderView = nil
         movieDetailTableView.addSubview(headerView)
         movieDetailTableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
-        movieDetailTableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
+        movieDetailTableView.contentOffset = CGPoint(x: 0, y: 0)//-kTableHeaderHeight)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +68,7 @@ class MovieDetailsViewController: UIViewController {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: movieDetailTableView.bounds.width, height: kTableHeaderHeight)
-         if movieDetailTableView.contentOffset.y < -0 {
+         if movieDetailTableView.contentOffset.y < 0 {
                     headerRect.origin.y = movieDetailTableView.contentOffset.y
                     headerRect.size.height = -movieDetailTableView.contentOffset.y
                

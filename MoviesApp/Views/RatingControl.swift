@@ -12,7 +12,6 @@ public class RatingControl: UIControl {
     
     private let backgroundLayer = CAShapeLayer()
     private let ratingLayer = CAShapeLayer()
-    private let foregroundLayer = CAShapeLayer()
     private var positions = [CGRect]()
     
     private var ratingPercent: CGFloat = 0.5
@@ -106,15 +105,6 @@ public class RatingControl: UIControl {
         ratingMaskLayer.lineCap = .round
         
         self.ratingLayer.mask = ratingMaskLayer
-        
-        // Setup foregroundLayer
-        self.foregroundLayer.path = maskPath.cgPath
-        self.foregroundLayer.strokeColor = self.ratingBorderColor.cgColor
-        self.foregroundLayer.fillColor = nil
-        self.foregroundLayer.lineWidth = self.ratingBorderWidth
-        self.foregroundLayer.lineJoin = .round
-        self.foregroundLayer.lineCap = .round
-        self.layer.addSublayer(self.foregroundLayer)
     }
     
     private func getStarPath(rect: CGRect) -> UIBezierPath{

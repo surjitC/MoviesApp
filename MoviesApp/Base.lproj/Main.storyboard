@@ -158,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="152" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2tL-k3-Kly">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <sections/>
                                 <connections>
@@ -166,18 +166,36 @@
                                     <outlet property="delegate" destination="BVF-Vi-BPd" id="67o-lu-rFe"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NV2-aJ-2yh">
+                                <rect key="frame" x="24" y="52" width="366" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="IfO-3E-OZj"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Box Office"/>
+                                    <segment title="Year"/>
+                                    <segment title="Rating"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortCategoryTapped:" destination="BVF-Vi-BPd" eventType="valueChanged" id="e7f-eR-oiS"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="F2H-gH-mNP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2tL-k3-Kly" firstAttribute="top" secondItem="F2H-gH-mNP" secondAttribute="top" id="R2u-a8-wGf"/>
+                            <constraint firstItem="F2H-gH-mNP" firstAttribute="trailing" secondItem="NV2-aJ-2yh" secondAttribute="trailing" constant="24" id="4vu-IJ-mPE"/>
+                            <constraint firstItem="NV2-aJ-2yh" firstAttribute="leading" secondItem="F2H-gH-mNP" secondAttribute="leading" constant="24" id="8aJ-lZ-N9k"/>
                             <constraint firstItem="2tL-k3-Kly" firstAttribute="bottom" secondItem="F2H-gH-mNP" secondAttribute="bottom" id="YI1-4G-Jfh"/>
                             <constraint firstItem="2tL-k3-Kly" firstAttribute="trailing" secondItem="F2H-gH-mNP" secondAttribute="trailing" id="bTs-6h-y4t"/>
                             <constraint firstItem="2tL-k3-Kly" firstAttribute="leading" secondItem="F2H-gH-mNP" secondAttribute="leading" id="peO-vg-4T6"/>
+                            <constraint firstItem="NV2-aJ-2yh" firstAttribute="top" secondItem="F2H-gH-mNP" secondAttribute="top" constant="8" id="uuL-Ex-1br"/>
+                            <constraint firstItem="2tL-k3-Kly" firstAttribute="top" secondItem="NV2-aJ-2yh" secondAttribute="bottom" constant="8" id="vnD-Cy-28I"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="moviesTableView" destination="2tL-k3-Kly" id="M1I-ED-Tou"/>
+                        <outlet property="sortingCatagorySegmentControl" destination="NV2-aJ-2yh" id="5OZ-in-6Nm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPU-m7-d8A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

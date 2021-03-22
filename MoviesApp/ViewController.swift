@@ -76,9 +76,20 @@ extension ViewController: UITableViewDelegate {
         switch self.homepage {
         case .DefaultIndex:
             self.movieCategoryViewModel.setSelectedCategory(from: indexPath.row)
-            let vc = CategoryViewController.initializeVC()
-            vc.movieCategoryViewModel = self.movieCategoryViewModel
-            self.navigationController?.pushViewController(vc, animated: true)
+            if self.movieCategoryViewModel.selectedCategory == .AllMovies {
+                let vc = MovieViewController.initializeVC()
+                let movies = self.movieCategoryViewModel.movies.sorted { (a, b) -> Bool in
+                    a.year ?? "" < b.year ?? ""
+                }
+                let viewModel = MovieViewModel(movies: movies)
+                vc.movieViewModel = viewModel
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = CategoryViewController.initializeVC()
+                vc.movieCategoryViewModel = self.movieCategoryViewModel
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
         case .Searching:
             if !self.movieCategoryViewModel.filteredMovies.isEmpty {
                 let vc = MovieDetailsViewController.initializeVC()

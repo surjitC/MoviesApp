@@ -19,6 +19,7 @@ class MovieCategoryViewModel {
         case Genre
         case Director
         case Actor
+        case AllMovies
     }
     
     weak var delegate: MovieCategoryViewModelDelegate?
@@ -26,8 +27,9 @@ class MovieCategoryViewModel {
     var movies: Movies = []
     var filteredMovies: Movies = []
     var categoryDict: [String: Movies] = [:]
-    var subCategoryNames: [String] = []
     var selectedCategory: Category?
+    
+    var catageries: [String] = []
     
     func getAllMovies() {
         let jsonParserUtility = JsonParserUtility()
@@ -47,8 +49,8 @@ class MovieCategoryViewModel {
     }
     
     func resetData() {
+        self.catageries = []
         self.categoryDict = [:]
-        self.subCategoryNames = []
         self.selectedCategory = .none
         self.delegate = .none
     }
@@ -71,7 +73,7 @@ extension MovieCategoryViewModel {
         case .Actor:
             return "Actors"
         default:
-            return ""
+            return "All Movies"
         }
     }
     
@@ -80,12 +82,19 @@ extension MovieCategoryViewModel {
     }
 }
 extension MovieCategoryViewModel {
+    func addCategoryString(_ value: String) {
+        if self.categoryDict[value] == nil {
+            self.catageries.append(value)
+            self.categoryDict[value] = Movies()
+        }
+    }
+    
     func createCategories() {
         self.movies.forEach { movie in
             switch selectedCategory {
             case .Year:
                 if let year = movie.year {
-                    self.addToCategory(with: year, movie)
+                    self.addCategoryString(year)
                 }
             case .Genre:
                 if let genre = movie.genre {
@@ -104,13 +113,12 @@ extension MovieCategoryViewModel {
             }
             
         }
-        self.createSubCategoryNames()
     }
     
     private func covertToSingleCategory(from line: String, _ movie: MovieModel) {
         let keys = line.components(separatedBy: ",")
         keys.forEach { key in
-            self.addToCategory(with: key.trimmingCharacters(in: .whitespacesAndNewlines), movie)
+            self.addCategoryString(key.trimmingCharacters(in: .whitespacesAndNewlines))
         }
     }
     private func addToCategory(with key: String, _ movie: MovieModel) {
@@ -120,19 +128,22 @@ extension MovieCategoryViewModel {
         self.categoryDict[key]?.append(movie)
     }
     
-    private func createSubCategoryNames() -> Void {
-        for (key, _) in self.categoryDict {
-            self.subCategoryNames.append(key)
+    func fetchMovies(with category: String) -> Movies {
+        let newMovies = self.movies.filter { movie -> Bool in
+            switch selectedCategory {
+            case .Year:
+                return (movie.year?.lowercased().contains(category.lowercased()) ?? false)
+            case .Genre:
+                return (movie.genre?.lowercased().contains(category.lowercased()) ?? false)
+            case .Director:
+                return (movie.director?.lowercased().contains(category.lowercased()) ?? false)
+            case .Actor:
+                return (movie.actors?.lowercased().contains(category.lowercased()) ?? false)
+            default:
+                return false
+            }
         }
-    }
-    
-    func getSubCategoryName(from row: Int) -> String {
-        return self.subCategoryNames[row]
-    }
-    
-    func getSubCategoryMovies(from row: Int) -> Movies? {
-        let key = self.subCategoryNames[row]
-        return categoryDict[key]
+        return newMovies
     }
     
     func filterMovies(by searchString: String) {
